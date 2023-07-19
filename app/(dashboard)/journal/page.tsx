@@ -1,7 +1,11 @@
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
+import { analyze } from "@/utils/ai";
 import { getUserByClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
+import { get } from "http";
+import { Days_One } from "next/font/google";
+import Link from "next/link";
 
 const getEntries = async () => {
   const user = await getUserByClerkID();
@@ -11,8 +15,11 @@ const getEntries = async () => {
     },
     orderBy: {
       createdAt: 'desc',
-    }
+    },
   });
+
+  // await analyze(`Today was an eh, ok day I guess.  I found a new coffee shop that was cool but then I got a flat tire. :)`)
+
   return entries;
 }
 
@@ -26,7 +33,11 @@ const JournalPage = async () => {
       </h2>
       <div className="grid grid-cols-3 gap-4">
         <NewEntryCard />
-        { entries.map( entry => <EntryCard key={entry.id} entry={entry} /> ) }
+        { entries.map( entry =>
+          <Link href={`/journal/${entry.id}`} key={entry.id}>
+            <EntryCard entry={entry} />
+          </Link> 
+        ) }
       </div>
     </div>
   )
