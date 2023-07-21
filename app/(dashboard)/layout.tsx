@@ -5,6 +5,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/journal", label: "Journal" },
   { href: "/history", label: "History" },
+  { href: "/delete",  label: "Delete" },
 ]
 
 const DashboardLayout = ({ children }) => {

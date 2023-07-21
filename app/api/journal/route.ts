@@ -34,3 +34,8 @@ export const POST = async () => {
 
   return NextResponse.json({ data: entry });
 }
+
+export const DELETE = async () => {
+  const deletingData = await prisma.journalEntry.deleteMany( {} );
+  return NextResponse.json({ data: "deleted " });
+}

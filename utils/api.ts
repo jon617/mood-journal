@@ -14,6 +14,18 @@ export const createNewEntry = async () => {
   }
 }
 
+export const deleteAll = async () => {
+  const res = await fetch(
+    new Request( `${window.location.origin}/api/journal`, {
+      method: "DELETE",
+    })
+  );
+  if (res.ok) {
+    const data = await res.json();
+    return data.data;
+  }
+}
+
 export const updateEntry = async (id, content) => {
   const res = await fetch(
     new Request(
