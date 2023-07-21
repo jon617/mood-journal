@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.21.15",
@@ -29,6 +30,11 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "prisma": "^5.0.0"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "jsdom": "^22.1.0",
+    "prisma": "^5.0.0",
+    "vitest": "^0.33.0"
   }
 }
